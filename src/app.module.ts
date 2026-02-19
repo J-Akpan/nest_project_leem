@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { User } from './users/users.entity';
 import { ProfileModule } from './profile/profile.module';
+import { Profile } from './profile/profile.entity';
 
 @Module({
   imports: [
@@ -21,7 +22,8 @@ import { ProfileModule } from './profile/profile.module';
         username: 'postgres',
         password: 'Akpan123',
         database: 'leem',
-        entities: [User],
+        // entities: [User, Profile],
+        autoLoadEntities: true,
         synchronize: true, //dont use in production
 
       })

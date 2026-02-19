@@ -13,24 +13,50 @@ export class Profile {
     id: number;
 
     @Column({
-        unique: true,
         type: 'varchar',
-        length: 100,
+        length: 50,
+        nullable: true,
     })
-    username: string;
-
-    @Column({
-        unique: true,
-        type: 'varchar',
-        length: 100,
-    })
-    email: string;
+    firstName: string;
 
     @Column({
         type: 'varchar',
-        length: 100,
+        length: 50,
+        nullable: true,
     })
-    password: string;
+    lastName: string;
+
+    @Column({
+        type: 'int',
+        nullable: true,
+    })
+    age: number;
+
+    @Column({
+        type: 'varchar',
+        length: 20,
+        nullable: true,
+    })
+    gender: string;
+
+    @Column({
+        type: 'varchar',
+        length: 100,
+        nullable: true,
+    })
+    dob: Date;
+
+    @Column({
+        type: 'text',
+        nullable: true,
+    })
+    bio: string;
+
+    @Column({
+        nullable: true,
+        type: 'text'
+    })
+    profilePicture: string;
 
     @CreateDateColumn()
     createdAt: Date;
