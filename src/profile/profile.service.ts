@@ -14,8 +14,8 @@ export class ProfileService {
         private userRepository: Repository<User>
     ) { }
 
-    getAllProfiles(): any {
-        let profiles = this.profileRepository.find({
+    public async getAllProfiles() {
+        let profiles = await this.profileRepository.find({
             relations: { user: true }
         })
         return profiles
