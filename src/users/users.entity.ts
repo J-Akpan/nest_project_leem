@@ -1,4 +1,6 @@
 import { Column, DeleteDateColumn, UpdateDateColumn, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Profile } from "src/profile/profile.entity";
+import { OneToOne, JoinColumn } from "typeorm";
 
 @Entity()
 export class User {
@@ -28,6 +30,12 @@ export class User {
         length: 100
     })
     password: string
+
+    @OneToOne(() => Profile, {
+        cascade: ['insert']
+    })
+    @JoinColumn()
+    profile?: Profile
 
     @CreateDateColumn()
     createdAt: Date;
