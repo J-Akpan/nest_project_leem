@@ -1,6 +1,7 @@
 import { Column, DeleteDateColumn, UpdateDateColumn, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { Profile } from "src/profile/profile.entity";
-import { OneToOne, JoinColumn } from "typeorm";
+import { OneToOne, JoinColumn, OneToMany } from "typeorm";
+import {  Messages } from "src/message/message.entity";
 
 @Entity()
 export class User {
@@ -35,8 +36,10 @@ export class User {
         cascade: ['insert'],
         // eager: true
     })
-    @JoinColumn()
     profile?: Profile
+
+    @OneToMany(() => Messages, (message) => message.user)
+    messages: Messages[]
 
     @CreateDateColumn()
     createdAt: Date;

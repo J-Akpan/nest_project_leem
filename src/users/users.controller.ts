@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, ValidationPipe } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { createUserDto } from './dtos/create-user.dto';
 
@@ -14,6 +14,11 @@ export class UsersController {
     @Post()
     createUser(@Body(new ValidationPipe()) userDto: createUserDto) {
         return this.usersService.createUser(userDto)
+    }
+
+    @Delete(':id')
+    deleteUser(@Body('id') id: number) {
+        return this.usersService.deleteUser(id)
     }
 
 }

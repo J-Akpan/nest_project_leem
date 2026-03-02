@@ -21,5 +21,12 @@ export class ProfileService {
         return profiles
     }
 
+    // delete a profile
+    public async deleteProfile(id: number) {
+        await this.profileRepository.delete(id)
+        return { message: "Profile deleted successfully" }
+
+    }
+
 
 }

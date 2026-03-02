@@ -4,6 +4,7 @@ import {
     CreateDateColumn,
     DeleteDateColumn,
     Entity,
+    JoinColumn,
     OneToOne,
     PrimaryGeneratedColumn,
     UpdateDateColumn
@@ -59,7 +60,10 @@ export class Profile {
         type: 'text'
     })
     profilePicture: string;
-    @OneToOne(() => User, (user)=>user.profile)
+
+
+    @OneToOne(() => User, (user) => user.profile, { onDelete: 'CASCADE' })
+    @JoinColumn()
     user: User
 
     @CreateDateColumn()
